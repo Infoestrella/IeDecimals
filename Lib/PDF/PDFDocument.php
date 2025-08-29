@@ -7,7 +7,6 @@ use FacturaScripts\Core\Lib\PDF\PDFDocument as ParentClass;
 
 abstract class PDFDocument extends ParentClass
 {
-
     protected function insertBusinessDocBody($model)
     {
         $headers = [];
@@ -18,7 +17,6 @@ abstract class PDFDocument extends ParentClass
             'width' => $this->tableWidth
         ];
 
-        // fill headers and options with the line headers information
         foreach ($this->getLineHeaders() as $key => $value) {
             $headers[$key] = $value['title'];
             if (in_array($value['type'], ['number', 'percentage'], true)) {
@@ -69,5 +67,4 @@ abstract class PDFDocument extends ParentClass
             $this->pdf->ezTable($tableData, $headers, '', $tableOptions);
         }
     }
-
 }
